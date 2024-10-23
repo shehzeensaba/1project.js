@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            /* background-color: #0d1b2a; */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url("https://img.freepik.com/free-vector/gradient-numerology-background_23-2150066816.jpg?ga=GA1.1.1639133888.1710839055&semt=ais_hybrid-rr-similar");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .calculator {
+            text-align: center;
+            background-color:#673ab700;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: inset 0px 0px 15px rgba(0, 0, 0, 0.9);
+        }
+        h1 {
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px #000;
+        }
+        input[type="number"] {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            text-align: center;
+            font-size: 20px;
+            width: 100px;
+            background-color: #000;
+            color: #0ef;
+            outline: none;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            margin: 10px;
+            padding: 15px;
+            width: 60px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+        .buttons button:hover {
+            transform: scale(1.1);
+        }
+        .delete-btn {
+            background: linear-gradient(to right, #ff5f6d, #ffc371);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Simple Calculator</h1>
+        <input type="number" id="num1" placeholder="number">
+        <input type="number" id="num2" placeholder="number">
+        <div class="buttons">
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate('*')">x</button>
+            <button onclick="calculate('/')">/</button>
+            <button class="delete-btn" onclick="clearFields()">Del</button>
+        </div>
+        <h2 id="result">Result: </h2>
+    </div>
+
+    <script>
+        function calculate(operator) {
+            var num1 = parseFloat(document.getElementById("num1").value); //number format mein convert karta hai
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var result;
+
+            if (isNaN(num1) || isNaN(num2)) { //Not-a-Number
+                result = "Please enter both numbers!";
+            } else {
+                switch (operator) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    case '/':
+                        result = num2 === 0 ? "Cannot divide by 0" : num1 / num2;
+                        break;
+                }
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+
+        function clearFields() {
+            document.getElementById("num1").value = '';
+            document.getElementById("num2").value = '';
+            document.getElementById("result").innerHTML = "Result:";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
